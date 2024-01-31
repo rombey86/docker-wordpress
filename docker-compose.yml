@@ -10,7 +10,8 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
-
+    networks:
+      - wp_default
   wordpress:
     depends_on:
       - db
@@ -29,15 +30,15 @@ services:
       # For debugging only:
       #WP_DEBUG: "true"
       #WP_DEBUG_DISPLAY: "true"
-
+    networks:
+     - wp_default
+     - npm_default
 volumes:
   db-data:
   site-data:
 
 networks:
-  default:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.91.0/24
+  wp_default:
+    external: true
+ npm_default:
+    external: true
