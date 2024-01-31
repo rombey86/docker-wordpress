@@ -12,6 +12,7 @@ services:
       MYSQL_PASSWORD: wordpress
     networks:
       - wp_default
+      
   wordpress:
     depends_on:
       - db
@@ -20,12 +21,14 @@ services:
       - "site-data:/var/www/wp-content"
     ports:
       - "8123:80"
+    env_file:
+      - .env
     environment:
       DB_HOST: db
       DB_PASSWORD: wordpress
       DB_NAME: wordpress
       DB_USER: wordpress
-      WORDPRESS_SITE_URL: https://source.it-live-blog.com
+      WORDPRESS_SITE_URL: ${URL}
       FS_METHOD: direct
       # For debugging only:
       #WP_DEBUG: "true"
