@@ -19,8 +19,8 @@ services:
     build: ./
     volumes:
       - "site-data:/var/www/wp-content"
-    ports:
-      - "8123:80"
+#    ports:
+#      - "8123:80"
     env_file:
       - .env
     environment:
