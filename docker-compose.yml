@@ -11,8 +11,7 @@ services:
       MYSQL_USER: $DB_USER
       MYSQL_PASSWORD: $DB_PASS
     networks:
-      - wp_default
-      
+      - wp_default  
   wordpress:
     depends_on:
       - db
