@@ -6,10 +6,10 @@ services:
     volumes:
       - "db-data:/var/lib/mysql"
     environment:
-      MYSQL_ROOT_PASSWORD: wordpress
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: $DB_ROOT
+      MYSQL_DATABASE: $DB_NAME
+      MYSQL_USER: $DB_USER
+      MYSQL_PASSWORD: $DB_PASS
     networks:
       - wp_default
       
@@ -25,10 +25,10 @@ services:
       - .env
     environment:
       DB_HOST: db
-      DB_PASSWORD: ${DB_PASS}
-      DB_NAME: ${DB_NAME}
-      DB_USER: wordpress
-      WORDPRESS_SITE_URL: ${URL}
+      DB_PASSWORD: $DB_PASS
+      DB_NAME: $DB_NAME
+      DB_USER: $DB_USER
+      WORDPRESS_SITE_URL: $URL
       FS_METHOD: direct
       # For debugging only:
       #WP_DEBUG: "true"
